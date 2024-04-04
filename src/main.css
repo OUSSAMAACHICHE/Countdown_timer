@@ -1,0 +1,196 @@
+html {
+	font-size: 14px;
+}
+
+:root {
+	/* ### Primary */
+
+	--Grayish-blue: hsl(237, 18%, 59%);
+	--Soft-red: hsl(345, 95%, 68%);
+
+	/* ### Neutral */
+
+	--white: hsl(0, 0%, 100%);
+	--Dark-desaturated-blue: hsl(236, 21%, 26%);
+	--Very-dark-blue: hsl(235, 16%, 14%);
+	--Very-dark-blue-black: hsl(234, 17%, 12%);
+	/*  (mostly black) */
+}
+
+body {
+	font-size: inherit;
+	font-family: "Red Hat Text", sans-serif;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+
+main {
+	background-image: url(../images/bg-stars.svg);
+	background-color: var(--Very-dark-blue);
+	min-height: 100vh;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	
+}
+
+main h1 {
+	color: var(--white);
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	text-align: center;
+	font-size: 1.6rem;
+	margin-top: 150px;
+}
+
+.time {
+	display: flex;
+	margin-top: 70px;
+	gap: 1rem;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	
+}
+
+
+.time>div>.timer {
+	position: relative;
+	font-size: 2.5rem;
+	width: 5rem;
+	height: 5rem;
+	line-height: 5rem;
+	z-index: 1;
+	color: var(--Soft-red);
+	
+}
+
+.time>div>.timer::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 50%;
+	background-color: var(--Dark-desaturated-blue);
+	border-radius: 8px;
+	z-index: -1;
+	transition: transform .3s ease-in;
+	
+}
+.time>div>.timer.move::before {
+	animation: topEffect .5s infinite alternate;
+}
+
+@keyframes topEffect {
+	0% {
+		transform: rotateX(0deg);
+	  }
+	  100% {
+		transform: rotateX(-180deg);
+	  }
+  }
+
+.time>div>.timer::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 50%;
+	background-color: var(--Dark-desaturated-blue);
+	border-radius: 8px;
+	z-index: -5;
+	transition: transform .3s ease-in;
+}
+.time>div>.timer.effect::after {
+	animation: moveEffect .5s infinite alternate;
+}
+
+
+@keyframes moveEffect {
+	0% {
+	  transform: rotateX(0deg);
+	}
+	100% {
+	  transform: rotateX(-180deg);
+	}
+  }
+
+.time>div>span {
+	color: var(--Grayish-blue);
+	text-transform: uppercase;
+	margin-top: 10px;
+	display: block;
+	font-size: 0.7em;
+	letter-spacing: 2px;
+}
+
+footer {
+	background-image: url(../images/pattern-hills.svg);
+	position: absolute;
+	bottom: -40px;
+	left: 0;
+	right: 0;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 80% top;
+	height: 20rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+footer i {
+	margin-inline: 20px;
+	font-size: 2em;
+	color: var(--Grayish-blue);
+	cursor: pointer;
+	margin-top: 40px;
+	transition: all 0.2s;
+}
+
+footer i:hover {
+	color: var(--Soft-red);
+}
+
+@media screen and (min-width: 767px) {
+	html {
+		font-size: 23px;
+	}
+	main h1 {
+		font-size: 1rem;
+	}
+	footer {
+		height: 10rem;
+	} 
+	footer i {
+		font-size: 1em;
+	}
+	.time>div>span {
+		font-size: 0.5em;
+	}
+}
+
+.attribution {
+	font-size: 11px;
+	text-align: center;
+	position: fixed;
+	bottom: 0;
+}
+
+.attribution a {
+	color: hsl(228, 45%, 44%);
+}
